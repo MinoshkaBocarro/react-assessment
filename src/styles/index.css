@@ -1,0 +1,84 @@
+html,
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: white;
+	color: black;
+}
+
+body.dark-mode {
+	background-color: black;
+	color: white;
+}
+
+#app {
+	display: grid;
+	grid-template-areas: "header header" "sidebar window" "footer footer";
+	grid-template-columns: 1fr 7fr;
+	width: 100%;
+	background-color: inherit;
+	color: inherit;
+}
+
+nav {
+	grid-area: header;
+}
+
+.sidebar {
+	grid-area: sidebar;
+}
+
+footer {
+	grid-area: footer;
+}
+
+.show-window {
+	display: grid;
+}
+
+.show-window.open {
+	grid-template-areas: "show-list";
+}
+
+.show-window.open {
+	grid-template-areas: "show-list show-detail";
+	grid-template-columns: 1fr 2fr;
+}
+
+.show-list {
+	grid-area: show-list;
+}
+
+.show-detail {
+	grid-area: show-detail;
+	position: relative;
+}
+
+.show-detail-content {
+	position: sticky;
+	top: 0;
+}
+
+.show-item {
+	max-height: 300px;
+	height: 100%;
+	max-width: 100%;
+}
+
+.show-window.open .show-item {
+	height: 150px;
+}
+
+.show-item .poster {
+	height: 100%;
+	object-fit: cover;
+	width: auto;
+}
+
+.row {
+	margin: 0;
+}
