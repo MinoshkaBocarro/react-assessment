@@ -21,10 +21,10 @@ function Header() {
 							</Nav.Link>
 							<Nav.Link
 								as={Link}
-								to="/tv/shows"
+								to="/contact"
 								className="px-3 fs-5"
 							>
-								TV Shows
+								Contact
 							</Nav.Link>
 							<Navbar.Text>
 								<LightSwitch />
