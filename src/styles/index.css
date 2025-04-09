@@ -1,18 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+	--primary-color-light: #4a90e2;
+	--secondary-color-light: #50e3c2;
+	--background-color-light: #f4f6f9;
+	--sidebar-background-light: #34495e;
+	--text-color-light: #333333;
+	--accent-color-light: #ff6f61;
+
+	/* Dark Mode Colors */
+	--primary-color-dark: #1e2a3a;
+	--secondary-color-dark: #5bc0be;
+	--background-color-dark: #121212;
+	--sidebar-background-dark: #1c2532;
+	--text-color-dark: #e4e4e4;
+	--accent-color-dark: #ff6f61;
+}
+
 html,
 body {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	font-family: "Montserrat", "Open Sans", apple-system, sans-serif;
 }
 
 body {
-	background-color: white;
-	color: black;
+	background-color: var(--background-color-light);
+	color: var(--text-color-light);
+	transition: all 0.3 ease;
 }
 
 body.dark-mode {
-	background-color: black;
-	color: white;
+	background-color: var(--background-color-dark);
+	color: var(--text-color-dark);
 }
 
 #app {
@@ -26,10 +47,36 @@ body.dark-mode {
 
 nav {
 	grid-area: header;
+	background-color: var(--primary-color-light);
+}
+
+body.dark-mode nav {
+	background-color: var(--primary-color-dark);
 }
 
 .sidebar {
 	grid-area: sidebar;
+	background-color: var(--sidebar-background-light);
+	color: #fff;
+	height: 100%;
+}
+
+.list-group {
+	border-top: solid var(--secondary-color-light) 1px;
+	border-bottom: solid var(--secondary-color-light) 1px;
+}
+
+.list-group-item {
+	background-color: var(--sidebar-background-light);
+	border-color: var(--secondary-color-light);
+}
+
+.list-group-item a {
+	color: #fff;
+}
+
+body.dark-mode .sidebar {
+	background-color: var(--sidebar-background-dark);
 }
 
 footer {

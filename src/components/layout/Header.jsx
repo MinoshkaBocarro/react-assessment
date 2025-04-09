@@ -7,7 +7,7 @@ import { GiStoneTower } from "react-icons/gi";
 function Header() {
 	return (
 		<>
-			<Navbar id="navbar" className="mb-2 navbar-class" variant="light">
+			<Navbar id="navbar" className="mb-2 navbar-class" variant="dark">
 				<Container>
 					<Navbar.Brand as={Link} to="/">
 						<GiStoneTower />

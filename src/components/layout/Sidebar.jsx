@@ -49,7 +49,7 @@ function Sidebar() {
 	return (
 		<div className="sidebar">
 			<h2>My Lists</h2>
-			<ListGroup>
+			<ListGroup variant="flush">
 				{myLists.map((item) => {
 					return (
 						<ListGroup.Item key={item.id}>
