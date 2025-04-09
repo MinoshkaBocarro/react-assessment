@@ -9,7 +9,7 @@ function ShowList() {
 	return (
 		<Row className="g-4">
 			{listArray.map((show) => (
-				<Col key={show.id} xs={12}>
+				<Col key={show.id} xs={12} data-testid="showListItem">
 					<ShowListItem showInfo={show} setListArray={setListArray} />
 				</Col>
 			))}
