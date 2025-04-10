@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Form } from "react-bootstrap";
+import AppButton from "../../common/AppButton";
 
 function ShowSearch({ setSearchTerm }) {
 	const [searchPlaceholder, setSearchPlaceholder] = useState("");
@@ -12,16 +14,17 @@ function ShowSearch({ setSearchTerm }) {
 	}
 
 	return (
-		<div className="show-search">
-			<input
+		<div className="show-search d-flex">
+			<Form.Control
 				type="search"
+				placeholder="TV show…"
+				className="me-1"
+				aria-label="Search for a TV Show"
 				value={searchPlaceholder}
 				onChange={handleSearchChange}
-				placeholder="TV show…"
-				aria-label="Search for a TV Show"
 				id="show-search"
 			/>
-			<button onClick={searchShows}>Search</button>
+			<AppButton onClick={searchShows}>Search</AppButton>
 		</div>
 	);
 }

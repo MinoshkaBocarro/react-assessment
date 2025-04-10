@@ -107,6 +107,7 @@ footer {
 
 .show-search {
 	margin-left: 10px;
+	max-width: 450px;
 }
 
 .show-list {
