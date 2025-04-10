@@ -53,7 +53,32 @@ nav {
 	margin-bottom: 10px;
 }
 
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.nav-link {
+	margin-top: 5px;
+}
+
+.add-list:hover {
+	cursor: pointer;
+}
+
 body.dark-mode nav {
+	background-color: var(--sidebar-background-dark);
+}
+
+footer {
+	background-color: var(--sidebar-background-light);
+	padding: 10px;
+	text-align: center;
+	color: var(--text-color-dark);
+}
+
+body.dark-mode footer {
 	background-color: var(--sidebar-background-dark);
 }
 
@@ -89,7 +114,8 @@ footer {
 }
 
 #app-content {
-	padding: 30px 0px 30px 0px;
+	padding: 30px 30px 30px 0px;
+	min-height: 100vh;
 }
 
 .show-window {
@@ -121,37 +147,53 @@ footer {
 
 .show-detail-content {
 	position: sticky;
-	top: 0;
+	top: 50px;
 	margin-top: 25px;
-	min-height: 100vh;
 	background-color: var(--text-color-dark);
 	border-radius: 50px;
 	display: grid;
 	grid-template-columns: 3fr 7fr;
+	grid-template-rows: 40px 1fr;
+	grid-template-areas: ". close" "poster info";
 	padding: 60px;
+	font-size: 1.4rem;
+	gap: 20px;
+}
+
+body.dark-mode .show-detail-content {
+	background-color: var(--sidebar-background-light);
 }
 
 .show-detail .poster {
 	height: 450px;
 	width: auto;
+	grid-area: poster;
+}
+
+.show-detail-content > button {
+	grid-area: close;
+	width: 40px;
+	justify-self: flex-end;
 }
 
 .show-detail-right {
 	display: flex;
 	flex-direction: column;
+	grid-area: info;
 }
 
 .show-detail h2 {
 	align-self: center;
 }
 
+.show-detail .summary {
+	padding-top: 20px;
+	text-align: center;
+}
+
 .show-detail .add-buttons {
 	display: flex;
 	gap: 4px;
-	align-self: flex-end;
-}
-
-.show-detail-right button {
 	align-self: flex-end;
 }
 
@@ -174,9 +216,6 @@ body.dark-mode .show-item {
 	font-weight: 600;
 }
 
-.show-window.open .show-item {
-}
-
 .show-item img {
 	height: auto;
 	width: 250px;
@@ -191,4 +230,20 @@ body.dark-mode .show-item {
 
 .row {
 	margin: 0;
+}
+
+.form-text {
+	color: var(--text-color-light);
+}
+
+body.dark-mode .form-text {
+	color: var(--text-color-dark);
+}
+
+.rating {
+	text-align: center;
+}
+
+.thanks {
+	padding: 20px 50px;
 }

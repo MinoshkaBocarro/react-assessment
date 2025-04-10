@@ -57,7 +57,7 @@ function Sidebar() {
 						</ListGroup.Item>
 					);
 				})}
-				<ListGroup.Item onClick={handleShowModal}>
+				<ListGroup.Item className="add-list" onClick={handleShowModal}>
 					Add List
 				</ListGroup.Item>
 			</ListGroup>

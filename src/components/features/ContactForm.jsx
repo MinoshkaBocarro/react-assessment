@@ -3,6 +3,7 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Button, Form, Container } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
+import AppButton from "../common/AppButton";
 
 function ContactForm() {
 	//validation
@@ -70,20 +71,20 @@ function ContactForm() {
 		<>
 			{submitted ? (
 				<>
-					<div>
+					<div className="thanks">
 						Thanks for submitting {contactDetails.firstName}! We'll
 						get back to you at {contactDetails.email}
 					</div>
 				</>
 			) : (
 				<Container className="mt-5">
-					<h2>Contact Details</h2>
-					<h3>Please submit your details below</h3>
+					<h2 className="mb-2">Contact Details</h2>
+					<h3 className="mb-5">Please submit your details below</h3>
 					<Form
 						onSubmit={handleSubmit(onSubmit)}
 						noValidate="noValidate"
 					>
-						<Form.Group controlId="firstName">
+						<Form.Group className="mb-2" controlId="firstName">
 							<Form.Label>First Name</Form.Label>
 							<Controller
 								name="firstName"
@@ -105,7 +106,7 @@ function ContactForm() {
 							)}
 						</Form.Group>
 
-						<Form.Group controlId="lastName">
+						<Form.Group className="mb-2" controlId="lastName">
 							<Form.Label>Last Name</Form.Label>
 							<Controller
 								name="lastName"
@@ -127,7 +128,7 @@ function ContactForm() {
 							)}
 						</Form.Group>
 
-						<Form.Group controlId="email">
+						<Form.Group className="mb-3" controlId="email">
 							<Form.Label>Email Address</Form.Label>
 							<Controller
 								name="email"
@@ -149,7 +150,7 @@ function ContactForm() {
 							)}
 						</Form.Group>
 
-						<Form.Group controlId="rating">
+						<Form.Group className="mb-2 rating" controlId="rating">
 							<Form.Label>How do you rate the site?</Form.Label>
 							<Controller
 								name="rating"
@@ -168,7 +169,7 @@ function ContactForm() {
 							/>
 						</Form.Group>
 
-						<Form.Group controlId="concern">
+						<Form.Group className="mb-4" controlId="concern">
 							<Form.Label>
 								Your Concerns or Suggestions (Optional)
 							</Form.Label>
@@ -192,10 +193,11 @@ function ContactForm() {
 								</Form.Text>
 							)}
 						</Form.Group>
-
-						<Button variant="primary" type="submit">
-							Submit
-						</Button>
+						<div className="d-flex justify-content-end">
+							<Button variant="primary" type="submit">
+								Submit
+							</Button>
+						</div>
 					</Form>
 				</Container>
 			)}

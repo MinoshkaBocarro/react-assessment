@@ -70,10 +70,10 @@ function ShowDetail() {
 	return (
 		<div className="show-detail">
 			<div className="show-detail-content">
-				{showInfo.image?.medium ? (
+				{showInfo.image?.original ? (
 					<img
 						alt={`${showInfo.name}'s poster`}
-						src={showInfo.image.medium}
+						src={showInfo.image.original}
 						className="poster"
 					/>
 				) : (
@@ -84,8 +84,8 @@ function ShowDetail() {
 						className="poster"
 					/>
 				)}
+				<AppButton onClick={handleClose}>X</AppButton>
 				<div className="show-detail-right">
-					<AppButton onClick={handleClose}>X</AppButton>
 					<h2>{showInfo.name}</h2>
 					<div className="add-buttons">
 						<AppButton onClick={handleToggleFavourite}>
@@ -104,20 +104,35 @@ function ShowDetail() {
 							))}
 						</DropdownButton>
 					</div>
-					<p>
+					<p className="summary">
 						{showInfo.summary &&
 							showInfo.summary.replace(/<[^>]*>/g, "")}
 					</p>
 					<p>
+						<b>Genres:</b>{" "}
 						{showInfo.genres &&
 							showInfo.genres
 								.map((genre) => `${genre}`)
 								.join(", ")}
 					</p>
-					<p>{showInfo.language && showInfo.language}</p>
-					<p>{showInfo.rating.average && showInfo.rating.average}</p>
-					<p>{showInfo.runtime && `${showInfo.runtime} minutes`}</p>
-					<p>{setRunDates()}</p>
+					<p>
+						<b>Language:</b>{" "}
+						{showInfo.language && showInfo.language}
+					</p>
+					<p>
+						<b>Rating: </b>
+						{showInfo.rating.average
+							? showInfo.rating.average
+							: " NA"}
+					</p>
+					<p>
+						<b>Runtime:</b>{" "}
+						{showInfo.runtime && `${showInfo.runtime} minutes`}
+					</p>
+					<p>
+						<b>Run Dates: </b>
+						{setRunDates()}
+					</p>
 				</div>
 			</div>
 		</div>

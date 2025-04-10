@@ -27,12 +27,7 @@ function ListPage() {
 		};
 	}, [id]);
 
-	return (
-		<>
-			<div>listpageeeee</div>
-			<ShowWindow></ShowWindow>
-		</>
-	);
+	return <ShowWindow></ShowWindow>;
 }
 
 export default ListPage;

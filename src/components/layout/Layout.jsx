@@ -8,7 +8,6 @@ import { ShowListContext } from "../contexts/ShowListContext";
 
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import { Container } from "react-bootstrap";
 
 function Layout() {
 	const [currentShow, setCurrentShow] = useState({});

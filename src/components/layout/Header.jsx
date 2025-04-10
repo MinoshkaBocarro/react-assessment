@@ -11,7 +11,7 @@ function Header() {
 				<Container>
 					<Navbar.Brand as={Link} to="/">
 						<GiStoneTower />
-						The Watchtower
+						<div>The Watchtower</div>
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
@@ -29,13 +29,6 @@ function Header() {
 							<Navbar.Text>
 								<LightSwitch />
 							</Navbar.Text>
-							{/* <Nav.Link
-								as={Link}
-								to="/schedule"
-								className="px-3 fs-5"
-							>
-								Scheduled Shows
-							</Nav.Link> */}
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
