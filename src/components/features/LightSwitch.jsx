@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AppButton from "../common/AppButton";
 
 function LightSwitch() {
-	const [darkMode, setDarkMode] = useState(false);
+	const [, setDarkMode] = useState(false);
 
 	function toggleDarkMode() {
 		setDarkMode((prevMode) => {

@@ -5,7 +5,6 @@ import AppButton from "../../common/AppButton";
 import { CardContext } from "../../contexts/CardContext";
 import { updateLocalStorage } from "../../../UtilityFunctions";
 import { useParams } from "react-router-dom";
-import { ShowListContext } from "../../contexts/ShowListContext";
 
 function ShowListItem({ showInfo, setListArray }) {
 	const { id } = useParams();
