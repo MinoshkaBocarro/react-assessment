@@ -57,8 +57,10 @@ function Sidebar() {
 						</ListGroup.Item>
 					);
 				})}
+				<ListGroup.Item onClick={handleShowModal}>
+					Add List
+				</ListGroup.Item>
 			</ListGroup>
-			<AppButton onClick={handleShowModal}>&#x2b;</AppButton>
 
 			<Modal show={showModal} onHide={handleClose} backdrop="static">
 				<Modal.Header closeButton>

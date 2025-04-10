@@ -79,7 +79,8 @@ body.dark-mode .sidebar {
 	border-color: var(--secondary-color-light);
 }
 
-.list-group-item a {
+.list-group-item a,
+.list-group-item {
 	color: #fff;
 }
 
