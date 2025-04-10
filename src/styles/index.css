@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
 :root {
 	--primary-color-light: #4a90e2;
 	--secondary-color-light: #50e3c2;
-	--background-color-light: #f4f6f9;
+	--background-color-light: #ffffff;
 	--sidebar-background-light: #34495e;
 	--text-color-light: #333333;
 	--accent-color-light: #ff6f61;
@@ -39,7 +41,7 @@ body.dark-mode {
 #app {
 	display: grid;
 	grid-template-areas: "header header" "sidebar window" "footer footer";
-	grid-template-columns: 1fr 7fr;
+	grid-template-columns: 1fr 9fr;
 	width: 100%;
 	background-color: inherit;
 	color: inherit;
@@ -47,18 +49,24 @@ body.dark-mode {
 
 nav {
 	grid-area: header;
-	background-color: var(--primary-color-light);
+	background-color: var(--sidebar-background-light);
+	margin-bottom: 10px;
 }
 
 body.dark-mode nav {
-	background-color: var(--primary-color-dark);
+	background-color: var(--sidebar-background-dark);
 }
 
 .sidebar {
 	grid-area: sidebar;
-	background-color: var(--sidebar-background-light);
+	background-color: var(--sidebar-background-dark);
 	color: #fff;
 	height: 100%;
+	padding: 20px;
+}
+
+body.dark-mode .sidebar {
+	background-color: var(--sidebar-background-light);
 }
 
 .list-group {
@@ -75,12 +83,12 @@ body.dark-mode nav {
 	color: #fff;
 }
 
-body.dark-mode .sidebar {
-	background-color: var(--sidebar-background-dark);
-}
-
 footer {
 	grid-area: footer;
+}
+
+#app-content {
+	padding: 30px;
 }
 
 .show-window {
@@ -94,6 +102,10 @@ footer {
 .show-window.open {
 	grid-template-areas: "show-list show-detail";
 	grid-template-columns: 1fr 2fr;
+}
+
+.show-search {
+	margin-left: 10px;
 }
 
 .show-list {
@@ -111,19 +123,37 @@ footer {
 }
 
 .show-item {
-	max-height: 300px;
-	height: 100%;
-	max-width: 100%;
+	width: auto;
+	max-width: 250px;
+	height: min-content;
+	display: inline-block;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border: solid var(--secondary-color-light) 2px;
+}
+
+body.dark-mode .show-item {
+	background-color: var(--sidebar-background-dark);
+	color: var(--text-color-dark);
+}
+
+.show-item .card-title {
+	font-size: 1.7rem;
+	font-weight: 600;
 }
 
 .show-window.open .show-item {
-	height: 150px;
 }
 
-.show-item .poster {
-	height: 100%;
-	object-fit: cover;
-	width: auto;
+.show-item img {
+	height: auto;
+	width: 250px;
+}
+
+.show-item button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
 }
 
 .row {

@@ -22,7 +22,7 @@ function Layout() {
 		<div id="app">
 			<Header id="header" />
 			<Sidebar />
-			<Container id="app-content">
+			<div id="app-content">
 				<ShowListContext.Provider value={{ listArray, setListArray }}>
 					<CurrentShowContext.Provider
 						value={{
@@ -39,7 +39,7 @@ function Layout() {
 						</CardContext.Provider>
 					</CurrentShowContext.Provider>
 				</ShowListContext.Provider>
-			</Container>
+			</div>
 			<Footer />
 		</div>
 	);
