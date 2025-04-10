@@ -84,35 +84,41 @@ function ShowDetail() {
 						className="poster"
 					/>
 				)}
-				<AppButton onClick={handleClose}>X</AppButton>
-				<h2>{showInfo.name}</h2>
-				<div className="add-buttons">
-					<AppButton onClick={handleToggleFavourite}>
-						&#9829;
-					</AppButton>
-					<DropdownButton id="dropdown-basic-button" title="">
-						{getListsArray().map((list) => (
-							<Dropdown.Item
-								key={list.id}
-								onClick={() => handleToggleListItem(list.id)}
-							>
-								{list.listName}
-							</Dropdown.Item>
-						))}
-					</DropdownButton>
+				<div className="show-detail-right">
+					<AppButton onClick={handleClose}>X</AppButton>
+					<h2>{showInfo.name}</h2>
+					<div className="add-buttons">
+						<AppButton onClick={handleToggleFavourite}>
+							&#9829;
+						</AppButton>
+						<DropdownButton id="dropdown-basic-button" title="">
+							{getListsArray().map((list) => (
+								<Dropdown.Item
+									key={list.id}
+									onClick={() =>
+										handleToggleListItem(list.id)
+									}
+								>
+									{list.listName}
+								</Dropdown.Item>
+							))}
+						</DropdownButton>
+					</div>
+					<p>
+						{showInfo.summary &&
+							showInfo.summary.replace(/<[^>]*>/g, "")}
+					</p>
+					<p>
+						{showInfo.genres &&
+							showInfo.genres
+								.map((genre) => `${genre}`)
+								.join(", ")}
+					</p>
+					<p>{showInfo.language && showInfo.language}</p>
+					<p>{showInfo.rating.average && showInfo.rating.average}</p>
+					<p>{showInfo.runtime && `${showInfo.runtime} minutes`}</p>
+					<p>{setRunDates()}</p>
 				</div>
-				<p>
-					{showInfo.summary &&
-						showInfo.summary.replace(/<[^>]*>/g, "")}
-				</p>
-				<p>
-					{showInfo.genres &&
-						showInfo.genres.map((genre) => `${genre}`).join(", ")}
-				</p>
-				<p>{showInfo.language && showInfo.language}</p>
-				<p>{showInfo.rating.average && showInfo.rating.average}</p>
-				<p>{showInfo.runtime && `${showInfo.runtime} minutes`}</p>
-				<p>{setRunDates()}</p>
 			</div>
 		</div>
 	);

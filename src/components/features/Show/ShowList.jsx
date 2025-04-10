@@ -16,6 +16,7 @@ function ShowList() {
 					key={show.id}
 					md={currentShow.showActive ? 12 : 3}
 					data-testid="showListItem"
+					className="d-flex justify-content-center"
 				>
 					<ShowListItem showInfo={show} setListArray={setListArray} />
 				</Col>
