@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import { ShowListContext } from "../../../contexts/ShowListContext";
 import { CardContext } from "../../../contexts/CardContext";
+import { CurrentShowContext } from "../../../contexts/CurrentShowContext";
 
 import ShowList from "../ShowList";
 
@@ -28,11 +29,15 @@ const listArraySix = {
 	],
 };
 
+const currentShowActive = true;
+
 const MockShowList = ({ listArray }) => {
 	return (
 		<CardContext.Provider value={{ cardRemoveButton: false }}>
 			<ShowListContext.Provider value={listArray}>
-				<ShowList />
+				<CurrentShowContext.Provider value={currentShowActive}>
+					<ShowList />
+				</CurrentShowContext.Provider>
 			</ShowListContext.Provider>
 		</CardContext.Provider>
 	);
