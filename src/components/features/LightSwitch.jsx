@@ -1,13 +1,12 @@
-// LightSwitch Component
-
-// This component provides a button that allows the user to toggle between dark and light mode for the application. It tracks the times when dark mode is activated and stores these times in local storage. It also adjusts the dark mode based on the average activation time recorded in the local storage.
-
-// State Management:
-// - `darkMode`: State used to track if dark mode is on, allowing to toggle between dark and light mode.
-
-// Methods:
-// - `toggleDarkMode`
-// - `saveTime`
+/** LightSwitch Component
+ *
+ * This component provides a button that allows the user to toggle between dark and light mode for the application. It tracks the times when dark mode is activated and stores these times in local storage. It also adjusts the dark mode based on the average activation time recorded in the local storage.
+ *
+ * State Management:
+ * - darkMode: State used to track if dark mode is on, allowing to toggle between dark and light mode.
+ * Methods:
+ * - toggleDarkMode
+ * - saveTime */
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -15,52 +14,57 @@ import { useEffect, useState } from "react";
 // Components
 import AppButton from "../common/AppButton";
 
-// LightSwitch Functional Component
-
-// Toggles the application's dark mode on or off. The component also tracks the times when dark mode is activated and uses those times to calculate whether dark mode should be activated automatically on page load.
+/** LightSwitch Functional Component
+ * @component
+ * @returns {JSX.Element} a button that toggles dark mode and auto-activates based on usage. */
 function LightSwitch() {
+	/** Property: setDarkMode
+	 * Used to update the state that controls whether dark mode is enabled. Actual state value not needed
+	 * @type {Function}
+	 */
 	const [, setDarkMode] = useState(false);
 
-	// toggles between dark and light mode by changing the body's class name and saving the current time to local storage.
+	/** Function: toggleDarkMode
+	 * Toggles dark mode by updating the body class and storing the current activation time.
+	 * Called when user clicks the "Toggle Dark Mode button"
+	 * @type {Function}
+	 * @return {string}
+	 */
 	function toggleDarkMode() {
-		// toggle the current dark mode status
 		setDarkMode((prevMode) => {
 			const nextMode = !prevMode;
 			document.body.className = nextMode ? "dark-mode" : "";
-			// save the current hour
 			saveTime();
 			return nextMode;
 		});
 	}
 
-	// saves the current hour to local storage when dark mode is toggled.
+	/** Function: saveTime
+	 * Saves the current hour to localStorage under "darkModeTimes"
+	 * @type {Function}
+	 */
 	function saveTime() {
-		//  get current date and time
 		const now = new Date();
 
-		// retrieve array of times stored
 		const darkModeTimes = JSON.parse(
 			localStorage.getItem("darkModeTimes") || "[]"
 		);
 
-		// add current hour
 		darkModeTimes.push(now.getHours());
 
-		// save to localStorage
 		localStorage.setItem("darkModeTimes", JSON.stringify(darkModeTimes));
 	}
 
-	// on component mount, checks recorded dark mode activation times in local storage and activates dark mode automatically if current time is greater or equal to average dark mode activation times
+	/** Hook: useEffect
+	 * on component mount, checks recorded dark mode activation times in local storage and activates dark mode automatically if current time is greater or equal to average dark mode activation times
+	 */
 	useEffect(() => {
-		// retrieve array of times stored
 		const darkModeTimes = JSON.parse(
 			localStorage.getItem("darkModeTimes") || "[]"
 		);
 
-		// initialise variable to hold average time
 		let averageTime = 0;
 
-		// if there are any recorded dark mode activation times, calculate average activation time
 		if (darkModeTimes.length > 0) {
 			const averageTotal = darkModeTimes.reduce((previous, current) => {
 				return previous + current;
@@ -68,10 +72,7 @@ function LightSwitch() {
 			averageTime = averageTotal / darkModeTimes.length;
 		}
 
-		// get current time
 		const now = new Date();
-
-		// if the current hour is greater than or equal to the average time, enable dark mode
 
 		if (now.getHours() >= averageTime) {
 			setDarkMode(true);

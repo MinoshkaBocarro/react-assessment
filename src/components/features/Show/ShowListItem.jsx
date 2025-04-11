@@ -1,18 +1,15 @@
-// ShowListItem Component
-
-// This component represents a single item in a list of shows (ShowList Component). It displays the show LuPoundSterling, title and provides functionality for interacting with the show (viewing details and removing the item from a list)
-
-// Contexts used:
-// - 'CurrentShowContext': Provides the ability to set the active show and pass show details to other components.
-// - 'CardContext': Manages visibility of the remove button (X)
-
-// Props:
-// 'showInfo'
-// 'setListArray'
-
-// Methods:
-// -  `handleOpenShowDetail`
-// `handleRemove`
+/** ShowListItem Component
+ * This component represents a single item in a list of shows (ShowList Component). It displays the show LuPoundSterling, title and provides functionality for interacting with the show (viewing details and removing the item from a list)
+ * Contexts used:
+ * - 'CurrentShowContext': Provides the ability to set the active show and pass show details to other components.
+ * - 'CardContext': Manages visibility of the remove button (X)
+ *
+ * Props:
+ * - 'showInfo'
+ * - 'setListArray'
+ * Methods:
+ * -  `handleOpenShowDetail`
+ * `handleRemove` */
 
 // React Hooks
 import { useContext } from "react";
@@ -31,35 +28,38 @@ import AppButton from "../../common/AppButton";
 // Functions
 import { updateLocalStorage } from "../../../UtilityFunctions";
 
-// ShowListItem Functional Component
-
-// Displays a show item within a list. The component allows interaction via clicks on the card to view show details, and it also includes a remove button to remove the show from the list.
-
-// @param {Object} showInfo - An object containing show data
-// @param {Function} setListArray - A function to update the list of shows after an item is removed
+/** ShowListItem Functional Component
+ * @component
+ * @param {Object} props
+ * @param {Object} props.showInfo object containing data about the show
+ * @param {Function} props.setListArray callback to update the list of shows when one is removed
+ * @returns {JSX.Element} a Card that contains the show poster image and the show title. */
 function ShowListItem({ showInfo, setListArray }) {
-	// extract 'id' from URL
+	/** @const {Object} id the id extracted from uRL using useParams hook to identify which saved list is being interacted with*/
 	const { id } = useParams();
 
-	// access CurrentShowContext
+	/**@const {Object} setShowActive function that sets currentShowActive to Boolean value that indicates whether the current show is active */
+	/** @const {Object} setCurrentShow function that sets currentShow object to current show details */
 	const currentShowSetting = useContext(CurrentShowContext);
 
-	// opens the detailed view of the show when the card (but not the remove button) is clicked.
-	// @param {Event} e - The event triggered by the card click
+	/** Function: handleOpenShowDetail
+	 * Opens detailed view of a show when its card is clicked.
+	 * If the click is on the remove button, the function does nothing
+	 * @type {Function}
+	 * @param {Event} e - The event triggered by the card click */
 	function handleOpenShowDetail(e) {
-		// Check if the target is not the remove button
 		if (e.target.tagName !== "BUTTON") {
-			// Set the show as active and pass the show data to the context
 			currentShowSetting.setShowActive(true);
 			currentShowSetting.setCurrentShow(showInfo);
 		}
 	}
 
-	// access CurrentShowContext
-	// controls whether "X" remove button is displayed.
+	/**@const {Object} cardRemoveButton is a boolean value whether the card remove button exists on the page or not and used to inform actions unique to list page or home page*/
 	const { cardRemoveButton } = useContext(CardContext);
 
-	// handles the removal of the show from the list, updating localStorage and the show list context.
+	/** Function: handleRemove
+	 * Removes the show from current list and updates localStorage and re-renders the updated list using setListArray
+	 * @type {Function} */
 	function handleRemove() {
 		updateLocalStorage(id, showInfo, setListArray, id);
 	}
