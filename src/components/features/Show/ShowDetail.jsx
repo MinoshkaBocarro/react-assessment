@@ -122,7 +122,7 @@ function ShowDetail() {
 					<p>
 						<b>Rating: </b>
 						{showInfo.rating.average
-							? showInfo.rating.average
+							? `${showInfo.rating.average * 10}%`
 							: " NA"}
 					</p>
 					<p>

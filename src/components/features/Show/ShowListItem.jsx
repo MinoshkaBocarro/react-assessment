@@ -28,6 +28,9 @@ import AppButton from "../../common/AppButton";
 // Functions
 import { updateLocalStorage } from "../../../UtilityFunctions";
 
+// Images
+import notFoundPoster from "../../../assets/poster-not-found.png";
+
 /** ShowListItem Functional Component
  * @component
  * @param {Object} props
@@ -72,11 +75,18 @@ function ShowListItem({ showInfo, setListArray }) {
 			)}
 
 			{/* Render the show poster if available */}
-			{showInfo.image && (
+			{showInfo.image ? (
 				<Card.Img
 					variant="top"
 					alt={`${showInfo.name}'s poster`}
 					src={showInfo.image.medium}
+					className="poster img-fluid"
+				/>
+			) : (
+				<Card.Img
+					variant="top"
+					alt={`${showInfo.name}'s poster`}
+					src={notFoundPoster}
 					className="poster img-fluid"
 				/>
 			)}
